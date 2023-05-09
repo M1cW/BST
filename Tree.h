@@ -8,13 +8,18 @@ class BSTree
 {
 private:
     Node *_root;
-    void insert(int, Node *&);
+
     void print(Node *) const;
+    void insert(int, Node *&);
+    int size(Node *) const;
+    void remove(int, Node *);
 
 public:
     BSTree(); // default constructor
     void print() const;
     void insert(int value);
+    int size() const;
+    void remove(int value);
 };
 
 #endif
