@@ -12,10 +12,20 @@ struct Node
         this->_left = nullptr;
         this->_right = nullptr;
     }
-
     bool isLeaf() const
     {
         if (this->_left == nullptr && this->_right == nullptr)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    bool isFull() const
+    {
+        if (this->_left != nullptr && this->_right != nullptr)
         {
             return true;
         }

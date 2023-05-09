@@ -3,6 +3,7 @@ test: main.o Tree.o
 
 main.o: main.cpp
 	g++ -Wall -Werror -std=c++17 main.cpp -c
+	
 Tree.o: Tree.cpp
 	g++ -Wall -Werror -std=c++17 Tree.cpp -c
 
