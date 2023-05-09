@@ -14,7 +14,7 @@ But we need an easy way to print a tree to the console. So we'll define a tree
 notation that lets us write a tree structure as a single line. In this notation,
 the tree pictured above would look like this:
 ```
-((a b c) d (- e f))
+((2 5 6) 8 (- 10 11))
 ```
 More formally:
 - The tree notation for a leaf node is simply its value.
