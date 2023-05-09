@@ -1,5 +1,6 @@
 # BST
-
+In this repository, I am implementing a binary search tree for practice, with several common function implementation. 
+This tree is not self-balancing. There will be cases when it has poor (O(n)) performance.
 ## Tree Notation
 A binary tree might look something like this:
 ```
