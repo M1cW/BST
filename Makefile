@@ -8,5 +8,6 @@ Tree.o: Tree.cpp
 	g++ -Wall -Werror -std=c++17 Tree.cpp -c
 
 clean:
-	rm -f *.o
 	rm -f test
+	rm -f *.o
+	

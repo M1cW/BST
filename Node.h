@@ -12,6 +12,8 @@ struct Node
         this->_left = nullptr;
         this->_right = nullptr;
     }
+
+    // check if the node is a leaf node or a full node
     bool isLeaf() const
     {
         if (this->_left == nullptr && this->_right == nullptr)
