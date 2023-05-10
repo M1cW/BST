@@ -12,5 +12,7 @@ int main()
     tree.insert(998);
     tree.insert(2888);
     tree.print();
+    BSTree tree2(tree);
+    tree2.print();
     return 0;
 }

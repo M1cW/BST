@@ -19,6 +19,22 @@ void BSTree::delete_postOrder(Node *currNode)
     this->delete_postOrder(currNode->_right);
     delete currNode;
 }
+void BSTree::insert_preOrder(Node *objNode, Node *&currNode)
+{
+    if (objNode == nullptr)
+    {
+        return;
+    }
+    Node *newNode = new Node(objNode->_data);
+    currNode = newNode;
+    this->insert_preOrder(objNode->_left, currNode->_left);
+    this->insert_preOrder(objNode->_right, currNode->_right);
+}
+BSTree::BSTree(const BSTree &obj)
+{
+    this->_root = nullptr;
+    this->insert_preOrder(obj._root, this->_root);
+}
 //-----------------------------------------------------------------------------
 void BSTree::print(Node *currNode) const
 {

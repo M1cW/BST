@@ -15,10 +15,12 @@ private:
     void remove(int, Node *, Node *); // private helper for remove
 
     void delete_postOrder(Node *);
+    void insert_preOrder(Node *, Node *&);
 
 public:
     BSTree();  // default constructor
     ~BSTree(); // default destructor
+    BSTree(const BSTree &);
 
     void print() const;     // print the whole tree, with the given format
     void insert(int value); // insert a value to the tree
