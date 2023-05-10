@@ -232,3 +232,32 @@ void BSTree::remove(int value)
         remove(value, this->_root, this->_root); // if not empty, call helper
     }
 }
+//-----------------------------------------------------------------------------------
+int BSTree::height(Node *currNode) const
+{
+    // the bottom is either nullptr or leaf node
+    if (currNode == nullptr)
+    {
+        return 0;
+    }
+    if (currNode->isLeaf() == true)
+    {
+        return 0;
+    }
+
+    // if didn't reach the bottom
+    int left_subtree_height = this->height(currNode->_left);
+    int right_subtree_height = this->height(currNode->_right);
+    return 1 + std::max(left_subtree_height, right_subtree_height); // 1+the largest height of left/right subtree
+}
+int BSTree::height() const
+{
+    if (this->_root == nullptr) // if it's an empty tree, the height of the tree is 0
+    {
+        return 0;
+    }
+    else
+    {
+        return this->height(this->_root); // not empty, call recursive function
+    }
+}
