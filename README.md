@@ -28,7 +28,11 @@ More formally:
   - the tree notation for its right subtree, followed by
   - a right parenthesis.
 - The tree notation for an empty tree is `-`.
-## Functions implemented
+## Functions implemented and clarifications
+All three **DFS** traversal method is implicitly implemented. <br>
+The 'print()' function uses **Inorder traversal (leftsubtree -> root -> rightsubtree)**, which gives the nodes in sorted order. <br>
+The destructor uses **Postorder traversal(leftsubtree -> rightsubtree ->root)**, which is used to delete the tree from leaf to node. <br>
+The copy constructor uses **Preorder traversal(root -> leftsubtree -> rightsubtree)**, which is used to give the correct order of insertion. <br>
 - The default constructor.
 - The destructor. 
 - The copy constructor.
