@@ -36,6 +36,7 @@ The copy constructor uses **Preorder traversal(root -> leftsubtree -> rightsubtr
 - The default constructor.
 - The destructor. 
 - The copy constructor.
+- I know the big five but didn't write the rest. 
 - `print()` prints the tree in the format given above.
 - `insert(value)` inserts the value to the tree if the value is not in the tree. If the value is already inside the tree, the function does nothing to the tree and prints an error line. 
 - `size()` returns the size of the tree in an integer.
