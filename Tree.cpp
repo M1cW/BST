@@ -54,7 +54,9 @@ void BSTree::insert(int value, Node *&currNode)
     {
         if (value == currNode->_data) // BST doesn't allow duplicate value
         {
-            throw std::invalid_argument("inserting an element that already exists in the binary search tree: no duplicate value allowed");
+            std::cout << "inserting an element that already exists in the binary search tree: no duplicate value allowed"
+                      << "\n";
+            return;
         }
         if (value < currNode->_data) // if the value is smaller than the current posiiton, then it has to be in the left subtree
         {
@@ -109,6 +111,8 @@ void BSTree::remove(int value, Node *currNode, Node *parentNode)
 {
     if (currNode == nullptr) // if we didn't find anything
     {
+        std::cout << "The element is not found in the tree"
+                  << "\n";
         return;
     }
 
@@ -190,17 +194,12 @@ void BSTree::remove(int value)
 {
     if (this->_root == nullptr) // if it is an empty tree
     {
-        throw std::invalid_argument("Can't remove node from an empty tree.");
+        std::cout << "Can't remove value from an empty tree"
+                  << "\n";
+        return;
     }
     else
     {
-        int origin_size = this->size();
         remove(value, this->_root, this->_root); // if not empty, call helper
-        int new_size = this->size();
-        if (origin_size == new_size)
-        {
-            std::cout << "The element is not found in the tree"
-                      << "\n";
-        }
     }
 }
