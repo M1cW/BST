@@ -30,7 +30,9 @@ More formally:
 - The tree notation for an empty tree is `-`.
 ## Functions implemented
 - The default constructor.
+- The destructor.
 - `print()` prints the tree in the format given above.
 - `insert(value)` inserts the value to the tree if the value is not in the tree. If the value is already inside the tree, the function does nothing to the tree and prints an error line. 
 - `size()` returns the size of the tree in an integer.
 - `remove(value)` removes the value from the tree if the value is in the tree. If the value is not in the tree or the tree is an empty tree, the function does nothing to the tree and prints an error line. 
+
