@@ -4,6 +4,21 @@ BSTree::BSTree()
 {
     this->_root = nullptr;
 }
+BSTree::~BSTree()
+{
+    this->delete_postOrder(this->_root);
+    this->_root = nullptr;
+}
+void BSTree::delete_postOrder(Node *currNode)
+{
+    if (currNode == nullptr)
+    {
+        return;
+    }
+    this->delete_postOrder(currNode->_left);
+    this->delete_postOrder(currNode->_right);
+    delete currNode;
+}
 //-----------------------------------------------------------------------------
 void BSTree::print(Node *currNode) const
 {
@@ -26,7 +41,6 @@ void BSTree::print(Node *currNode) const
         std::cout << ")";
     }
 }
-
 void BSTree::print() const
 {
     if (this->_root == nullptr) // if the tree is an empty tree
@@ -189,7 +203,6 @@ void BSTree::remove(int value, Node *currNode, Node *parentNode)
         this->remove(value, currNode->_left, currNode);
     }
 }
-
 void BSTree::remove(int value)
 {
     if (this->_root == nullptr) // if it is an empty tree

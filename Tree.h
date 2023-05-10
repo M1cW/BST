@@ -14,8 +14,11 @@ private:
     int size(Node *) const;           // private helper for size
     void remove(int, Node *, Node *); // private helper for remove
 
+    void delete_postOrder(Node *);
+
 public:
-    BSTree(); // default constructor
+    BSTree();  // default constructor
+    ~BSTree(); // default destructor
 
     void print() const;     // print the whole tree, with the given format
     void insert(int value); // insert a value to the tree
