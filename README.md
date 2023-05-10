@@ -1,6 +1,6 @@
 # BST
 In this repository, I am implementing a binary search tree for practice, with several common function implementation. 
-This tree is not self-balancing. There will be cases when it has poor (O(n)) performance.
+This tree is not self-balancing. There will be cases when it has poor (O(n)) performance. 
 ## Tree Notation
 A binary tree might look something like this:
 ```
@@ -30,7 +30,8 @@ More formally:
 - The tree notation for an empty tree is `-`.
 ## Functions implemented
 - The default constructor.
-- The destructor.
+- The destructor. 
+- The copy constructor.
 - `print()` prints the tree in the format given above.
 - `insert(value)` inserts the value to the tree if the value is not in the tree. If the value is already inside the tree, the function does nothing to the tree and prints an error line. 
 - `size()` returns the size of the tree in an integer.
