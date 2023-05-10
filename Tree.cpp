@@ -42,8 +42,9 @@ void BSTree::print() const
 }
 //-----------------------------------------------------------------------------
 void BSTree::insert(int value, Node *&currNode)
+// currNode is like the position that the node should be in, therefore pass by reference(we want to change the tree)
 {
-    if (currNode == nullptr)
+    if (currNode == nullptr) // find the space
     {
         Node *newNode = new Node(value);
         currNode = newNode;
@@ -51,15 +52,15 @@ void BSTree::insert(int value, Node *&currNode)
     }
     else
     {
-        if (value == currNode->_data)
+        if (value == currNode->_data) // BST doesn't allow duplicate value
         {
             throw std::invalid_argument("inserting an element that already exists in the binary search tree: no duplicate value allowed");
         }
-        if (value < currNode->_data)
+        if (value < currNode->_data) // if the value is smaller than the current posiiton, then it has to be in the left subtree
         {
             this->insert(value, currNode->_left);
         }
-        if (value > currNode->_data)
+        if (value > currNode->_data) // similarily.....
         {
             this->insert(value, currNode->_right);
         }
@@ -67,15 +68,15 @@ void BSTree::insert(int value, Node *&currNode)
 }
 void BSTree::insert(int value)
 {
-    if (this->_root == nullptr)
+    if (this->_root == nullptr) // if the tree is an empty tree
     {
-        Node *newNode = new Node(value);
-        this->_root = newNode;
+        Node *newNode = new Node(value); // directly add the tree
+        this->_root = newNode;           // set the root to the new node
         return;
     }
     else
     {
-        this->insert(value, this->_root);
+        this->insert(value, this->_root); // if not empty, call helper
     }
 }
 //-----------------------------------------------------------------------------
@@ -104,27 +105,29 @@ int BSTree::size(Node *currNode) const
 }
 //-----------------------------------------------------------------------------
 void BSTree::remove(int value, Node *currNode, Node *parentNode)
+// currNode is the current position we are on, parent Node is a pointer to the parent node of the current position (current node)
 {
-    if (currNode == nullptr)
+    if (currNode == nullptr) // if we didn't find anything
     {
         return;
     }
 
-    if (currNode->_data == value)
+    if (currNode->_data == value) // if we find the node with the value we want to delete
     {
         if (currNode->isLeaf())
         {
-            if (currNode == parentNode)
+            // case 1: the node is a leaf node
+            if (currNode == parentNode) // 1.1 the node is also the root (a tree with only a node)
             {
                 delete currNode;
                 this->_root = nullptr;
             }
-            else if (parentNode->_left == currNode)
+            else if (parentNode->_left == currNode) // 1.2 the leaf node is the left node of it's parent
             {
                 delete currNode;
                 parentNode->_left = nullptr;
             }
-            else
+            else // 1.3 ~right~
             {
                 delete currNode;
                 parentNode->_right = nullptr;
@@ -132,17 +135,20 @@ void BSTree::remove(int value, Node *currNode, Node *parentNode)
         }
         else if (currNode->isFull())
         {
-            Node *largestLeft = currNode->_left;
+            // case 2: the node is a full node
+            // we do not need to consider when it's deleting the root since it's always deleting a leaf node at the end
+            Node *largestLeft = currNode->_left; // we need to find the largest node in the left subtree
             while (largestLeft->_right != nullptr)
             {
                 largestLeft = largestLeft->_right;
             }
-            currNode->_data = largestLeft->_data;
-            remove(largestLeft->_data, currNode->_left, currNode);
+            currNode->_data = largestLeft->_data;                  // set the data to the largest node in the left subtree
+            remove(largestLeft->_data, currNode->_left, currNode); // remove the leaf node by recursion
         }
         else
         {
-            Node *childNode;
+            // case 3: the node has only one child
+            Node *childNode; // we need to first have a pointer to it's child
             if (currNode->_left == nullptr)
             {
                 childNode = currNode->_right;
@@ -151,11 +157,13 @@ void BSTree::remove(int value, Node *currNode, Node *parentNode)
             {
                 childNode = currNode->_left;
             }
-            if (currNode == parentNode)
+
+            if (currNode == parentNode) // 3.1 if the node is the root
             {
                 delete currNode;
                 this->_root = childNode;
             }
+            // 3.2 & 3.3 adjust the parent's pointer to the child based on whether the node we want to delete is the parent node's left or right child
             else if (parentNode->_left == currNode)
             {
                 delete currNode;
@@ -168,7 +176,7 @@ void BSTree::remove(int value, Node *currNode, Node *parentNode)
             }
         }
     }
-    else if (value > currNode->_data)
+    else if (value > currNode->_data) // recursion step, similar to insert
     {
         this->remove(value, currNode->_right, currNode);
     }
@@ -180,12 +188,19 @@ void BSTree::remove(int value, Node *currNode, Node *parentNode)
 
 void BSTree::remove(int value)
 {
-    if (this->_root == nullptr)
+    if (this->_root == nullptr) // if it is an empty tree
     {
         throw std::invalid_argument("Can't remove node from an empty tree.");
     }
     else
     {
-        remove(value, this->_root, this->_root);
+        int origin_size = this->size();
+        remove(value, this->_root, this->_root); // if not empty, call helper
+        int new_size = this->size();
+        if (origin_size == new_size)
+        {
+            std::cout << "The element is not found in the tree"
+                      << "\n";
+        }
     }
 }

@@ -16,7 +16,8 @@ private:
     void remove(int, Node *, Node *); // private helper for remove
 
 public:
-    BSTree();               // default constructor
+    BSTree(); // default constructor
+
     void print() const;     // print the whole tree, with the given format
     void insert(int value); // insert a value to the tree
     int size() const;       // get the size of the tree
