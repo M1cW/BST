@@ -40,4 +40,7 @@ The copy constructor uses **Preorder traversal(root -> leftsubtree -> rightsubtr
 - `insert(value)` inserts the value to the tree if the value is not in the tree. If the value is already inside the tree, the function does nothing to the tree and prints an error line. 
 - `size()` returns the size of the tree in an integer.
 - `remove(value)` removes the value from the tree if the value is in the tree. If the value is not in the tree or the tree is an empty tree, the function does nothing to the tree and prints an error line. 
+- `height()` returns the height of the tree. An empty tree or a tree with only root node would have height 0. 
+<br>
+Clarfications: Except default constructor, all functions are done using a recursive approach. All fucntions have a helper function that retrieves an additional arguement (Node *), used for recursion. All helpers are overloaded, except destructor, which uses delete_postOrder(Node *), and copy constructor, which uses insert_preOrder(Node *). 
 
